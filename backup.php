@@ -22,7 +22,7 @@ try {
 	$container = $service->getContainer($containerName);
 
 	if($dbhost != '') {
-		// compress site filesh
+		// compress site files
 		echo date("H:i:s").' Archiving directory '.$directory."/\n";
 		echo shell_exec('zip -r file_archive.zip /var/www/'.$wwwName.'/'.$directory.'/*');
 		if(!file_exists("file_archive.zip")) {
@@ -54,7 +54,7 @@ try {
 		shell_exec('unlink db_backup.sql');
 	} else {
 		// zip just the site files
-		shell_exec('zip -rj archive.zip '.$directory.'/*');
+		shell_exec('zip -rj archive.zip /var/www/'.$wwwName.'/'.$directory.'/*');
 		echo 'Directory archived: '.$directory."\n";
 	}
 
